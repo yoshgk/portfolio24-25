@@ -2,27 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectsButton = document.getElementById("projects-button");
     const projectDropdown = document.getElementById("project-dropdown");
 
-    // Show dropdown when "Projects" is hovered
     projectsButton.addEventListener("mouseenter", () => {
-        projectDropdown.style.display = "block"; // Make the dropdown visible
+        projectDropdown.style.display = "block";
     });
 
-    // Keep dropdown visible when hovered
     projectDropdown.addEventListener("mouseenter", () => {
-        projectDropdown.style.display = "block"; // Keep it visible
+        projectDropdown.style.display = "block";
     });
-
-    // Hide dropdown when mouse leaves both "Projects" and the dropdown
     projectsButton.addEventListener("mouseleave", () => {
         setTimeout(() => {
             if (!projectDropdown.matches(':hover')) {
                 projectDropdown.style.display = "none";
             }
-        }, 50); // Add slight delay to allow hover transition
+        }, 50);
     });
 
     projectDropdown.addEventListener("mouseleave", () => {
-        projectDropdown.style.display = "none"; // Hide dropdown
+        projectDropdown.style.display = "none"; 
     });
 });
 
