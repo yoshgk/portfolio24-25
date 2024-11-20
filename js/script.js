@@ -1,39 +1,49 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     const projectsButton = document.getElementById("projects-button");
-    const projectDropdown = document.getElementById("project-dropdown");
+    const projectsDropdown = document.getElementById("project-dropdown");
 
-    projectsButton.addEventListener("mouseenter", () => {
-        projectDropdown.style.display = "block";
-    });
+    function showDropdown() {
+        projectsDropdown.style.display = "block";
+    }
 
-    projectDropdown.addEventListener("mouseenter", () => {
-        projectDropdown.style.display = "block";
-    });
-    projectsButton.addEventListener("mouseleave", () => {
-        setTimeout(() => {
-            if (!projectDropdown.matches(':hover')) {
-                projectDropdown.style.display = "none";
+    function hideDropdown() {
+        setTimeout(function () {
+            if (!projectsDropdown.matches(':hover')) {
+                projectsDropdown.style.display = "none";
             }
         }, 50);
-    });
+    }
 
-    projectDropdown.addEventListener("mouseleave", () => {
-        projectDropdown.style.display = "none"; 
-    });
+    function hideDropdownImmediately() {
+        projectsDropdown.style.display = "none";
+    }
+
+    projectsButton.addEventListener("mouseenter", showDropdown);
+    projectsDropdown.addEventListener("mouseenter", showDropdown);
+    projectsButton.addEventListener("mouseleave", hideDropdown);
+    projectsDropdown.addEventListener("mouseleave", hideDropdownImmediately);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     const learningOutcomeItems = document.querySelectorAll(".learning-outcomes li");
     const contentSections = document.querySelectorAll(".lo-content");
 
-    learningOutcomeItems.forEach(item => {
-        item.addEventListener("click", () => {
-            learningOutcomeItems.forEach(lo => lo.classList.remove("active"));
-            contentSections.forEach(section => section.classList.remove("active"));
-
-            item.classList.add("active");
-            const loId = item.getAttribute("data-lo");
-            document.getElementById(loId).classList.add("active");
+    function handleLearningOutcomeClick(event) {
+        learningOutcomeItems.forEach(function (lo) {
+            lo.classList.remove("active");
         });
+
+        contentSections.forEach(function (section) {
+            section.classList.remove("active");
+        });
+
+        event.target.classList.add("active");
+
+        const loId = event.target.getAttribute("data-lo");
+        document.getElementById(loId).classList.add("active");
+    }
+
+    learningOutcomeItems.forEach(function (item) {
+        item.addEventListener("click", handleLearningOutcomeClick);
     });
 });
