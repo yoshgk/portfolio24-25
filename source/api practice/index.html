@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Exchange Rate Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Currency Converter</h1>
+        <div class="main-content">
+            <div id="boxModel" class="firstBox">
+                <select name="currency" id="currencyFirst">
+                    <!-- <option value="USD">USD</option>
+                    <option value="EUR">EUR</option> -->
+                    <input type="number" id="currencyInput" value="1.00" step="0.50" required>
+                </select>
+            </div>
+            
+            <div id="boxModel" class="secondBox">
+                <select name="currency" id="currencySecond">
+                    <!-- <option value="USD">USD</option>
+                    <option value="EUR">EUR</option> -->
+                    <input type="number" id="conversionOutput" readonly>
+                </select>
+            </div>
+        </div>
+        <!-- <button id="convertButton">Convert</button> -->
+
+        <script src="app.js"></script>
+    </body>
+</html>
