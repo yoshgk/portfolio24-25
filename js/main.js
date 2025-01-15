@@ -84,14 +84,14 @@ let laptopHTML = null;
 function createMonitorHTML() {
   const iframe = document.createElement('iframe');
   iframe.src = 'home.html'; // Adjust URL as needed
-  iframe.style.width = '63%';
-  iframe.style.height = '71.5%';
+  iframe.style.width = '59.895833333333333333333333333333%';
+  iframe.style.height = '71.581196581196581196581196581197%';
   iframe.style.position = 'absolute';
   iframe.style.border = 'none';
   iframe.style.zIndex = '1000';
   iframe.style.pointerEvents = 'auto';
   iframe.style.backgroundColor = 'white'; // For debugging (optional)
-  iframe.style.top = '50%';
+  iframe.style.top = '49.786324786324786324786324786325%';
   iframe.style.left = '50%';
   iframe.style.transform = 'translate(-50%, -50%)';
   iframe.style.opacity = '1';
@@ -103,15 +103,15 @@ function createMonitorHTML() {
 function createLaptopHTML() {
   const iframe = document.createElement('iframe');
   iframe.src = 'about.html'; // Adjust URL as needed
-  iframe.style.width = '60.8%';
-  iframe.style.height = '67.98%';
+  iframe.style.width = '57.552083333333333333333333333333%';
+  iframe.style.height = '68.589743589743589743589743589744%';
   iframe.style.position = 'absolute';
   iframe.style.border = 'none';
   iframe.style.zIndex = '1000';
   iframe.style.pointerEvents = 'auto';
   iframe.style.backgroundColor = 'white'; // For debugging (optional)
-  iframe.style.top = '39.13%';
-  iframe.style.left = '50.5%';
+  iframe.style.top = '38.995726495726495726495726495726%';
+  iframe.style.left = '50.520833333333333333333333333333%';
   iframe.style.transform = 'translate(-50%, -50%)';
   iframe.style.opacity = '1';
   document.body.appendChild(iframe);
@@ -305,6 +305,9 @@ function updateCameraInfo() {
     <strong>Camera Rotation:</strong><br>
     x: ${camera.rotation.x.toFixed(2)}°<br>
     y: ${camera.rotation.y.toFixed(2)}°<br>
-    z: ${camera.rotation.z.toFixed(2)}°<br>
+    z: ${camera.rotation.z.toFixed(2)}°<br><br>
+    <strong>Screen Dimensions:</strong><br>
+    width: ${window.innerWidth}px<br>
+    height: ${window.innerHeight}px
   `;
 }

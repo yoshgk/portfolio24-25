@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Verdana', sans-serif;
     background-color: #f1e9d5;
     color: #333;
 }
@@ -420,6 +420,7 @@ footer p {
     width: 75%;
     height: auto;
     object-fit: cover;
+    cursor: zoom-in;
 }
 
 .project-img {
