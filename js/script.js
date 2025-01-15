@@ -21,4 +21,23 @@ document.addEventListener("DOMContentLoaded", function () {
     clickableWords.forEach(word => {
         word.addEventListener("click", toggleContent);
     });
+
+    const toggleAboutContent = (event) => {
+        const targetClass = event.target.getAttribute("data-target");
+        const targetContent = document.querySelector(`.${targetClass}`);
+        const allContents = document.querySelectorAll(".about-me-content > div");
+
+        allContents.forEach(content => {
+            content.classList.remove("active");
+        });
+
+        if (targetContent) {
+            targetContent.classList.add("active");
+        }
+    };
+
+    const aboutMenuItems = document.querySelectorAll(".about-menu li");
+    aboutMenuItems.forEach(item => {
+        item.addEventListener("click", toggleAboutContent);
+    });
 });
