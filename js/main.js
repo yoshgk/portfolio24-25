@@ -81,18 +81,32 @@ let laptopHTML = null;
 // -----------------------
 
 // For the monitor (displays home.html)
+// Helper function to calculate dynamic styles
+function getResponsiveStyles(baseWidth, baseHeight, baseTop, baseLeft) {
+  const scaleWidth = window.innerWidth / 1920;
+  const scaleHeight = window.innerHeight / 936;
+  return {
+    width: `${baseWidth * scaleWidth}px`,
+    height: `${baseHeight * scaleHeight}px`,
+    top: `${baseTop * scaleHeight}px`,
+    left: `${baseLeft * scaleWidth}px`,
+  };
+}
+
+// For the monitor (displays home.html)
 function createMonitorHTML() {
   const iframe = document.createElement('iframe');
   iframe.src = 'home.html'; // Adjust URL as needed
-  iframe.style.width = '59.895833333333333333333333333333%';
-  iframe.style.height = '71.581196581196581196581196581197%';
+  const styles = getResponsiveStyles(1150, 670, 466, 960);
+  iframe.style.width = styles.width;
+  iframe.style.height = styles.height;
   iframe.style.position = 'absolute';
   iframe.style.border = 'none';
   iframe.style.zIndex = '1000';
   iframe.style.pointerEvents = 'auto';
   iframe.style.backgroundColor = 'white'; // For debugging (optional)
-  iframe.style.top = '49.786324786324786324786324786325%';
-  iframe.style.left = '50%';
+  iframe.style.top = styles.top;
+  iframe.style.left = styles.left;
   iframe.style.transform = 'translate(-50%, -50%)';
   iframe.style.opacity = '1';
   document.body.appendChild(iframe);
@@ -103,20 +117,37 @@ function createMonitorHTML() {
 function createLaptopHTML() {
   const iframe = document.createElement('iframe');
   iframe.src = 'about.html'; // Adjust URL as needed
-  iframe.style.width = '57.552083333333333333333333333333%';
-  iframe.style.height = '68.589743589743589743589743589744%';
+  const styles = getResponsiveStyles(1105, 642, 365, 970);
+  iframe.style.width = styles.width;
+  iframe.style.height = styles.height;
   iframe.style.position = 'absolute';
   iframe.style.border = 'none';
   iframe.style.zIndex = '1000';
   iframe.style.pointerEvents = 'auto';
   iframe.style.backgroundColor = 'white'; // For debugging (optional)
-  iframe.style.top = '38.995726495726495726495726495726%';
-  iframe.style.left = '50.520833333333333333333333333333%';
+  iframe.style.top = styles.top;
+  iframe.style.left = styles.left;
   iframe.style.transform = 'translate(-50%, -50%)';
   iframe.style.opacity = '1';
   document.body.appendChild(iframe);
   return iframe;
 }
+window.addEventListener('resize', () => {
+  if (monitorHTML) {
+    const styles = getResponsiveStyles(1150, 670, 466, 960);
+    monitorHTML.style.width = styles.width;
+    monitorHTML.style.height = styles.height;
+    monitorHTML.style.top = styles.top;
+    monitorHTML.style.left = styles.left;
+  }
+  if (laptopHTML) {
+    const styles = getResponsiveStyles(1105, 642, 365, 970);
+    laptopHTML.style.width = styles.width;
+    laptopHTML.style.height = styles.height;
+    laptopHTML.style.top = styles.top;
+    laptopHTML.style.left = styles.left;
+  }
+});
 
 // -----------------------
 // Functions to Open the Iframes and Animate the Camera
