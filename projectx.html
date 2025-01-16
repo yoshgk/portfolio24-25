@@ -9,7 +9,7 @@
         <header>
             <div id="header-logo">Yoshua K</div>
             <nav>
-                <a href="index.html">Projects</a>
+                <a href="home.html">Projects</a>
                 <a href="learningoutcomes.html">Learning Outcomes</a>
             </nav>
         </header>
@@ -23,37 +23,95 @@
 
                 <div class="project-txt">
                     <h3>Introduction</h3>
-                    <p>Project X is a unique initiative aimed at exploring new frontiers in technology and innovation. This project focuses on developing cutting-edge solutions to address contemporary challenges.</p>
+                    <p>Project X, aka the passion project, was the sprint where I can think of anything to do. This was my chance to 
+                        dip my toe in the water of game development. I wanted to create a game. Simple as that. 
+                    </p>
                 </div>
 
                 <div class="project-tools">
                     <h3>Tools Used</h3>
                     <ul>
                         <li>Word</li>
-                        <li>Figma</li>
-                        <li>Photoshop</li>
-                        <li>InDesign</li>
+                        <li>Blender</li>
+                        <li>Unreal Engine</li>
                     </ul>
                 </div>
 
                 <div class="project-txt">
-                    <h3>Documentation</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h3>Process</h3>
+                    <p>Tp start off this sprint, I wrote my project plan. In it where I describe what I wanted to do and how 
+                        I would have to do it. After some input on toning down the scope, I went on to designing <span class="clickable-word" data-target="slimeo-content">my character</span>. 
+                    A simple design with minimal effort in rigging. I went in Blender to start modeling my character. After my character, 
+                I went on to make the <span class="clickable-word" data-target="stage-content">game stage</span>. Again in Blender, to create both assets to which I need to import in Unreal Engine 
+            To get the real headache going</p>
                 </div>
-
-                <div class="project-txt-and-img">
+                <div id="slimeo-content" class="project-txt-and-img">
                     <div class="images">
-                        <img src="source/images/placeholder.jpg" alt="Placeholder Image">
-                        <img src="source/images/placeholder.jpg" alt="Placeholder Image">
+                        <img src="source/ProjectX/images/20241218_184914.jpg" alt="Slime Concept">
+                        <img src="source/ProjectX/images/slimeo3.png" alt="Slime-o 3">
                     </div>
                     <div class="text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>I went to make a few sketches of this character. I wanted a slime/blob creature that was easy to 
+                            create in Blender. Slime-o Jones was born. It's a silly name like other video game characters 
+                            like Earthworm Jim or Wild Woody. 
+                        </p>
+                        <p>It took some time but the hardest part of this was really the slime material for the body. Playing around 
+                            with the transparency would make the model too noisy but It would have to do for the creatiop 
+                            of Slime-o Jones. With a backwards cap and sunglasses, I finished the materials of the model and then 
+                            added armature bones to the model for rigging. 
+                        </p>
                     </div>
                 </div>
-
-                <div class="project-img">
-                    <img src="source/images/placeholder.jpg" alt="Placeholder Image">
-                    <img src="source/images/placeholder.jpg" alt="Placeholder Image">
+                <div id="stage-content" class="project-txt-and-img">
+                    <div class="images">
+                        <img src="source/ProjectX/images/stageref.png" alt="Stage Reference">
+                        <img src="source/ProjectX/images/stagefull.png" alt="Stage Done">
+                    </div>
+                    <div class="text">
+                        <p>I wanted a small stage that was shaped like a snake. A stage that isn't just a big boring 
+                            square. I wanted to make it interesting. I made a drawing in paint and then went on to Blender 
+                            to create the stage. It was supposed to be shaped like a snake. So the user can move around the game 
+                            in a somewhat interesting way. With a start and finish point indicated by the letters. 
+                        </p>
+                        <p>The stage I made in Blender had more to it than the reference. It still keeps the snake shape I was going for 
+                            but I added some more details to make it more interesting. I added platforms to jump on. With added collision to the model so 
+                            the importing in Unreal Engine would be easier. 
+                        </p>
+                    </div>
+                </div>
+                <div class="project-txt">
+                    <p>Importing in <span class="clickable-word" data-target="unreal-content">Unreal Engine</span> was a challenge. When importing models from Blender, there are so many 
+                        checkboxes to see which should be checked or not. Unreal Engine itself had way more. After importing 
+                        the character and stage, I went on to learn how Unreal Engine works. In the end I got my character 
+                        running and jumping around. On January 17th I hope to showcase a playable demo even if it's outside the scope.
+                    </p>
+                </div>
+                <div id="unreal-content" class="project-txt-and-img">
+                    <div class="images">
+                        <img src="source/ProjectX/images/unreal1.png" alt="Unreal Engine1">
+                        <img src="source/ProjectX/images/unreal2.png" alt="Unreal Engine2">
+                    </div>
+                    <div class="text">
+                        <p>Learning Unreal Engine in the shortest time span possible was hell. I don't think I could say I learned anything. 
+                            There is still so much I don't know about. Also importing the work from Blender was a challenge. 
+                            Again, with so many checkboxes to see which should be checked or not, some things were not imported properly. 
+                            The stage itself was missing a few meshes, and Slime-o Jones was his slime material body and some of his glasses. 
+                        </p>
+                        <p>With the armature also not present, I went along to learn how to rig in Unreal Engine. It was a challenge 
+                            but I got it working. I got Slime-o Jones running and jumping around. I should add some animations for him 
+                            as he has the skeleton to do so. There are collision issues with the stage, which is not as bad right now 
+                            but hopefully by January 17th, I can get it fixed for the showcase. If not, then I have my scope done with a 
+                            working prototype of a game.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-txt">
+                    <h3>Reflection</h3>
+                    <p>The main issue I had here was that I was in Aruba at the time most of the work needed to be done. Working with Blender 
+                        on my laptop just sucks and I am glad I am back home to work on it on my pc. Other than that, I did a fast job with the Blender 
+                        work of the stage and Slime-o Jones. I could have done better with the stage. I could have added more details to it. And I Still 
+                        don't think I really dipped my toe in the waters of game development. just a skin cell.
+                    </p>
                 </div>
             </section>
         </main>
@@ -67,6 +125,5 @@
         </footer>
         
         <script src="js/script.js"></script>
-        <script type="module" src="js/main.js"></script>
     </body>
 </html>

@@ -33,6 +33,7 @@ renderer.domElement.style.zIndex = '0';
 renderer.domElement.style.pointerEvents = 'none';
 document.body.appendChild(renderer.domElement);
 
+
 // CSS3D Renderer (in front)
 const cssRenderer = new CSS3DRenderer();
 cssRenderer.setSize(window.innerWidth, window.innerHeight);
@@ -303,17 +304,70 @@ window.addEventListener('click', onMouseClick);
 // -----------------------
 // Debug Info Overlay (Optional)
 // -----------------------
-const infoDiv = document.createElement('div');
-infoDiv.style.position = 'absolute';
-infoDiv.style.top = '10px';
-infoDiv.style.left = '10px';
-infoDiv.style.padding = '5px 10px';
-infoDiv.style.color = 'black';
-infoDiv.style.backgroundColor = 'white';
-infoDiv.style.fontFamily = 'monospace';
-infoDiv.style.fontSize = '14px';
-infoDiv.style.zIndex = '999';
-document.body.appendChild(infoDiv);
+// const infoDiv = document.createElement('div');
+// infoDiv.style.position = 'absolute';
+// infoDiv.style.top = '10px';
+// infoDiv.style.left = '10px';
+// infoDiv.style.padding = '5px 10px';
+// infoDiv.style.color = 'black';
+// infoDiv.style.backgroundColor = 'white';
+// infoDiv.style.fontFamily = 'monospace';
+// infoDiv.style.fontSize = '14px';
+// infoDiv.style.zIndex = '999';
+// document.body.appendChild(infoDiv);
+
+// -----------------------
+// Create Text Labels
+// -----------------------
+let monitorLabel = null;
+let laptopLabel = null;
+
+// Helper function to create text labels
+function createLabel(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  div.style.position = 'absolute';
+  div.style.fontFamily = 'Arial, sans-serif';
+  div.style.fontSize = '0.2px';
+  div.style.fontWeight = 'bold';
+  div.style.color = 'black';
+  div.style.borderRadius = '5px';
+  div.style.pointerEvents = 'none';
+  div.style.textAlign = 'center';
+  return new CSS3DObject(div);
+}
+
+// Add labels to the scene after the model loads
+loader.load('source/desk.glb', (gltf) => {
+  scene.add(gltf.scene);
+
+  monitor = gltf.scene.getObjectByName('monitor');
+  laptop = gltf.scene.getObjectByName('laptop');
+
+  if (monitor) {
+    monitorLabel = createLabel('WORK');
+    monitor.getWorldPosition(monitorLabel.position);
+    monitorLabel.position.y += 1; // Adjust position slightly above the monitor
+    scene.add(monitorLabel);
+  }
+
+  if (laptop) {
+    laptopLabel = createLabel('ABOUT');
+    laptop.getWorldPosition(laptopLabel.position);
+    laptopLabel.position.y += 1; // Adjust position slightly above the laptop
+    scene.add(laptopLabel);
+  }
+});
+
+function updateLabels() {
+  if (monitorLabel) {
+    monitorLabel.lookAt(camera.position);
+  }
+  if (laptopLabel) {
+    laptopLabel.lookAt(camera.position);
+  }
+}
+
 
 // -----------------------
 // Main Render Loop
@@ -323,22 +377,23 @@ function animate() {
   controls.update();
   renderer.render(scene, camera);
   cssRenderer.render(scene, camera);
+  updateLabels(); // Ensure labels face the camera
   updateCameraInfo();
 }
 animate();
 
-function updateCameraInfo() {
-  infoDiv.innerHTML = `
-    <strong>Camera Position:</strong><br>
-    x: ${camera.position.x.toFixed(2)}<br>
-    y: ${camera.position.y.toFixed(2)}<br>
-    z: ${camera.position.z.toFixed(2)}<br><br>
-    <strong>Camera Rotation:</strong><br>
-    x: ${camera.rotation.x.toFixed(2)}°<br>
-    y: ${camera.rotation.y.toFixed(2)}°<br>
-    z: ${camera.rotation.z.toFixed(2)}°<br><br>
-    <strong>Screen Dimensions:</strong><br>
-    width: ${window.innerWidth}px<br>
-    height: ${window.innerHeight}px
-  `;
-}
+// function updateCameraInfo() {
+//   infoDiv.innerHTML = `
+//     <strong>Camera Position:</strong><br>
+//     x: ${camera.position.x.toFixed(2)}<br>
+//     y: ${camera.position.y.toFixed(2)}<br>
+//     z: ${camera.position.z.toFixed(2)}<br><br>
+//     <strong>Camera Rotation:</strong><br>
+//     x: ${camera.rotation.x.toFixed(2)}°<br>
+//     y: ${camera.rotation.y.toFixed(2)}°<br>
+//     z: ${camera.rotation.z.toFixed(2)}°<br><br>
+//     <strong>Screen Dimensions:</strong><br>
+//     width: ${window.innerWidth}px<br>
+//     height: ${window.innerHeight}px
+//   `;
+// }
